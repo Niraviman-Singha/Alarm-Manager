@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.getSystemService
 import com.example.alarmmanager.databinding.ActivityMainBinding
@@ -49,18 +50,19 @@ class MainActivity : AppCompatActivity() {
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this,AlarmReceiver::class.java)
 
-        pendingIntent = PendingIntent.getBroadcast(this,0,intent,0)
+        pendingIntent = PendingIntent.getBroadcast(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
 
         alarmManager.cancel(pendingIntent)
 
         Toast.makeText(this,"Alarm Cancelled",Toast.LENGTH_SHORT).show()
+
     }
 
     private fun setAlarm() {
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this,AlarmReceiver::class.java)
 
-        pendingIntent = PendingIntent.getBroadcast(this,0,intent,0)
+        pendingIntent = PendingIntent.getBroadcast(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
 
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,calendar.timeInMillis,
@@ -82,6 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         picker.addOnPositiveButtonClickListener {
             if (picker.hour > 12) {
+                binding.selectedTime.text =
                 String.format("%02d", picker.hour - 12) + " : " + String.format(
                     "%02d",
                     picker.minute
@@ -96,6 +99,7 @@ class MainActivity : AppCompatActivity() {
             calendar[Calendar.HOUR_OF_DAY] = picker.hour
             calendar[Calendar.MINUTE] = picker.minute
             calendar[Calendar.SECOND] = 0
+            calendar[Calendar.MILLISECOND] = 0
 
 
         }
