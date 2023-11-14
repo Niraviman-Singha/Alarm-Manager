@@ -13,7 +13,7 @@ class AlarmReceiver:BroadcastReceiver() {
         val i = Intent(context,DestinationActivity::class.java)
         intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
-        val pendingIntent = PendingIntent.getActivity(context,0,i, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent = PendingIntent.getActivity(context,0,i, 0)
 
         val builder = NotificationCompat.Builder(context!!,"niraviman")
             .setSmallIcon(R.drawable.ic_launcher_background)
@@ -25,6 +25,6 @@ class AlarmReceiver:BroadcastReceiver() {
             .setContentIntent(pendingIntent)
 
         val notificationManager = NotificationManagerCompat.from(context)
-       // notificationManager.notify(123,builder.build())
+       notificationManager.notify(123,builder.build())
     }
 }
