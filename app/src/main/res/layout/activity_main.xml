@@ -4,34 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#F6B19B"
+    android:orientation="vertical"
     android:padding="10dp"
     tools:context=".MainActivity">
 
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/selectedTime"
-       android:layout_marginTop="200dp"
-       android:text="08 : 45 PM"
-       android:textStyle="bold"
-       android:textAlignment="center"
-       android:textColor="#0B1860"
-       android:textSize="50dp">
+    <TextView
+        android:id="@+id/selectedTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:text="08 : 45 PM"
+        android:textAlignment="center"
+        android:textColor="#0B1860"
+        android:textSize="50dp"
+        android:textStyle="bold">
 
-   </TextView>
+    </TextView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/selectTimeBtn"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="8dp"
-        app:cornerRadius="10dp"
-        android:backgroundTint="#061778"
         android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#061778"
         android:text="Select Time"
-        android:textSize="35sp">
+        android:textSize="35sp"
+        app:cornerRadius="10dp">
 
     </com.google.android.material.button.MaterialButton>
 
@@ -39,12 +39,12 @@
         android:id="@+id/setAlarmBtn"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="8dp"
-        app:cornerRadius="10dp"
-        android:backgroundTint="#061778"
         android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#061778"
         android:text="Set Alarm"
-        android:textSize="35sp">
+        android:textSize="35sp"
+        app:cornerRadius="10dp">
 
     </com.google.android.material.button.MaterialButton>
 
@@ -52,12 +52,12 @@
         android:id="@+id/cancelAlarmBtn"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="8dp"
-        app:cornerRadius="10dp"
-        android:backgroundTint="#061778"
         android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#061778"
         android:text="Cancel Alarm"
-        android:textSize="35sp">
+        android:textSize="35sp"
+        app:cornerRadius="10dp">
 
     </com.google.android.material.button.MaterialButton>
 

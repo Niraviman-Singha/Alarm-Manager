@@ -4,9 +4,12 @@ import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.content.getSystemService
 import com.example.alarmmanager.databinding.ActivityMainBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -37,11 +40,33 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.cancelAlarmBtn.setOnClickListener {
+            cancelAlarm()
 
         }
     }
 
+    private fun cancelAlarm() {
+        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this,AlarmReceiver::class.java)
+
+        pendingIntent = PendingIntent.getBroadcast(this,0,intent,0)
+
+        alarmManager.cancel(pendingIntent)
+
+        Toast.makeText(this,"Alarm Cancelled",Toast.LENGTH_SHORT).show()
+    }
+
     private fun setAlarm() {
+        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this,AlarmReceiver::class.java)
+
+        pendingIntent = PendingIntent.getBroadcast(this,0,intent,0)
+
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,pendingIntent
+        )
+        Toast.makeText(this,"Alarm Set Successfully",Toast.LENGTH_SHORT).show()
 
     }
 
